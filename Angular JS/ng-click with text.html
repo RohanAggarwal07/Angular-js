@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+<body ng-app="myapp1">
+	<div ng-controller="mycntrl">
+	Enter absent count:-<input type="text" placeholder="absent count" ng-model="val"><br><br>
+	<button ng-click="countfun()"> Click to get present count </button>
+	<p>{{present}}</p>
+</div>
+
+<script>
+	var m=angular.module("myapp1",[]);
+	 m.controller("mycntrl",function($scope)
+	 {
+	 	$scope.countfun=function(){
+	 	$scope.total=50;
+	 	//console.log($scope.val);
+	 	$scope.present=$scope.total-$scope.val;
+	 }
+	});
+</script>
+
+</body>
+</html>

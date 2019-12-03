@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+	<body ng-app="app1" ng-controller="cnt">
+		<p> Name Filtered is-: <br>
+			<ul>
+				<li ng-repeat="x in name|orderBy:'name'";>
+					{{x.name+" "+x.marks}}
+				</li>
+			</ul></p>
+		<script>
+			var a=angular.module("app1",[]);
+			a.controller("cnt",function($scope)
+			{
+				$scope.name=[{name:'raj',marks:20},
+							{name:'karan',marks:30}];			
+			});
+		</script>
+	</body>
+</html>

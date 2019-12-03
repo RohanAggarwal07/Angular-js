@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>  
+<style>
+	input.ng-invalid{
+		background-color: pink;
+	}
+	form.ng-dirty{
+		background-color: yellow;
+	}
+</style>
+<body>
+<div style="background-color: lightblue;height: 300px">
+<h1>Form Validation Example</h1>
+
+<form ng-app="myApp" ng-controller="validateCtrl" 
+name="myForm" novalidate>
+
+<p><b>Username:</b><br>
+<input type="text" name="user" ng-model="user" ng-minlength="5" ng-maxlength="10" required>
+<!--<span style="color:red" ng-show="myForm.user.$dirty && myForm.user.$invalid">-->
+<span ng-show="myForm.user.$error.required&&myForm.user.$dirty">Username is required.</span>
+<span style="color:Red" ng-show="myForm.user.$dirty&&myForm.user.$error.minlength">too short</span>
+<span style="color:Red" ng-show="myForm.user.$dirty&&myForm.user.$error.maxlength">too long</span>
+</span></p>
+
+<p><b>Email:</b><br>
+<input type="email" name="email" ng-model="email" required>
+<span style="color:red" ng-show="myForm.email.$touched && myForm.email.$invalid">
+<span ng-show="myForm.email.$error.required">Email is required.</span>
+<span ng-show="myForm.email.$error.email">Invalid email address.</span>
+</span>
+</p>
+
+
+
+</form>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('validateCtrl',function($scope){
+	$scope.user='';
+	$scope.email='';
+});
+</script></div>
+</body></html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"> </script>
+</head>
+<body ng-app="app1" ng-controller="cntrl">
+<p>select to get required data:</p>
+
+<select ng-model="selectdata">
+<option value="Student">Student</option>
+<option value="Employee">Employee</option>
+</select>
+
+
+<div ng-switch="selectdata">
+	<div ng-switch-when="Student">
+		<table border="2">
+			<tr ng-repeat="x in student">
+       			<td> {{ x.name }}</td>
+       			<td> {{ x.marks}}</td>		
+   			</tr>
+	</table>
+</div>
+
+<div ng-switch-when="Employee">
+	<table border="2" cellspacing="2">
+		<tr ng-repeat="x in employee">
+			<td>{{x.name}}</td>
+			<td>{{x.salary}}</td>
+		</tr>
+	</table>
+</div> 
+<div ng-switch-default>
+	<h3>select from dropdown list</h3>
+</div></div>
+
+<script>
+	var a=angular.module("app1",[])
+	a.controller("cntrl",function($scope)
+	{
+		$scope.student=[{name:'raj',marks:20},
+						{name:'karan',marks:30}];
+
+		$scope.employee=[{name:'anita',salary:20000},
+						  {name:'sushant',salary:10000}];				
+
+	});
+
+</script>
+</body>
+</html>
